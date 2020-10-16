@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
     //Username and password
     user: "root",
     password: process.env.MYSQLPW,
-    database: "employee_trackerDB"
+    database: "burgers_db"
 });
 
 // to test connection
