@@ -1,4 +1,4 @@
-var orm = require("../config/orm");
+var orm = require("../config/orm.js");
 
 var burger = {
     all: function(cb) {
@@ -16,8 +16,14 @@ var burger = {
         orm.update("burgers", objColVals, condition, function(res) {
             cb(res);
         });
-    }
+    },
+    delete(condition, cb) {
+        orm.delete('burgers', condition, function(res) {
+            cb(res);
+        });
+    },
 };
+
 
 // Export the database functions for the controller (catsController.js).
 module.exports = burger;
