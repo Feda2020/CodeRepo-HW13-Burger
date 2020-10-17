@@ -5,6 +5,8 @@
 .burgerImage {
     margin: 0 auto;
     text-align: center;
+    width: 20;
+    height: 13;
 }
 
 .lead {
@@ -153,7 +155,7 @@ body .burger-lists li {
 }
 
 body .list-box {
-    background-color: #fff5e1;
+    background-color: rgba(32, 178, 171, 0.267);
     border-radius: 7px;
     width: 100%;
 }
