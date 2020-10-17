@@ -27,11 +27,11 @@ function objToSql(ob) {
         if (Object.hasOwnProperty.call(ob, key)) {
             // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
+                value = `'${value}'`;
             }
             // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
             // e.g. {sleepy: true} => ["sleepy=true"]
-            arr.push(key + "=" + value);
+            arr.push(`${key}=${value}`);
         }
     }
 
@@ -42,7 +42,7 @@ function objToSql(ob) {
 // Object for all our SQL statement functions.
 var orm = {
     all: function(tableInput, cb) {
-        var queryString = "SELECT * FROM " + tableInput + ";";
+        var queryString = `SELECT * FROM ${tableInput};`;
         connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
@@ -51,7 +51,7 @@ var orm = {
         });
     },
     create: function(table, cols, vals, cb) {
-        var queryString = "INSERT INTO " + table;
+        var queryString = `INSERT INTO ${table}`;
 
         queryString += " (";
         queryString += cols.toString();
@@ -72,7 +72,7 @@ var orm = {
     },
     // An example of objColVals would be {name: panther, sleepy: true}
     update: function(table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
+        var queryString = `UPDATE ${table}`;
 
         queryString += " SET ";
         queryString += objToSql(objColVals);

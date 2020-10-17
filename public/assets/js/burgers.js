@@ -36,7 +36,7 @@ $(function() {
                 devoured: 0,
             };
 
-            // Send the POST request.
+            // Send the post request.
             $.ajax("/api/burgers", {
                 type: "POST",
                 data: newBurger,
@@ -52,12 +52,12 @@ $(function() {
     $(".delete-burger").on("click", function(event) {
         var id = $(this).data("id");
 
-        // Send the DELETE request.
+        // Send the delete request.
         $.ajax(`/api/burgers/${id}`, {
             type: "DELETE",
         }).then(function() {
             console.log("deleted burger", id);
-            // Reload the page to get the updated list
+            // get the updated list by reloading the page
             location.reload();
         });
     });
